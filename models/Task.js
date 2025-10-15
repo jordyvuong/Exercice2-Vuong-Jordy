@@ -1,9 +1,9 @@
 class Task {
   constructor(id, title, completed = false) {
-    this.id = id;
-    this.title = title; 
-    this.completed = completed;
-    this.createdAt = new Date();
+    this.id = id; // L'id de la tâche
+    this.title = title; // Titre de la tâche
+    this.completed = completed; // Etat de la tâche
+    this.createdAt = new Date(); // Date de création de la tâche
   }
 }
 
