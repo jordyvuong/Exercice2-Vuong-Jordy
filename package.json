@@ -1,0 +1,26 @@
+{
+  "name": "exercice2-vuong-jordy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordyvuong/Exercice2-Vuong-Jordy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jordyvuong/Exercice2-Vuong-Jordy/issues"
+  },
+  "homepage": "https://github.com/jordyvuong/Exercice2-Vuong-Jordy#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
