@@ -1,35 +1,78 @@
 # API Todolist - Express.js
 
-Une API REST simple pour gérer une liste de tâches, développée avec Express.js et l'architecture MVC.
+Une API REST simple pour gérer une liste de tâches, développée avec Express.js, MongoDB et l'architecture MVC.
+
+## Prérequis
+
+- Node.js (version 20 ou supérieure)
+- MongoDB (local ou via Docker)
+- npm ou yarn
 
 ## Installation
 
+1. Cloner le repository :
+```bash
+git clone https://github.com/jordyvuong/Exercice2-Vuong-Jordy.git
+cd Exercice2-Vuong-Jordy
+```
+
+2. Installer les dépendances :
 ```bash
 npm install
 ```
 
+3. Configurer les variables d'environnement :
+```bash
+cp .env.sample .env
+```
+Puis modifier le fichier `.env` avec vos paramètres de base de données.
+
 ## Démarrage
 
+### Développement local
+
 ```bash
+# Démarrage en mode développement (avec auto-reload)
+npm run dev
+
+# Démarrage en mode production
 npm run start
+```
+
+### Avec Docker
+
+```bash
+# Démarrer l'application et MongoDB avec Docker Compose
+docker-compose up -d
+
+# Arrêter les services
+docker-compose down
 ```
 
 Le serveur démarre sur `http://localhost:3000`
 
-## Endpoints
+## API Endpoints
 
-| Méthode | URL | Description | Body |
-|---------|-----|-------------|------|
-| GET | `/tasks` | Afficher toutes les tâches | - |
-| GET | `/tasks/:id` | Afficher une tâche | - |
-| POST | `/tasks` | Ajouter une tâche | `{ "title": "..." }` |
-| DELETE | `/tasks/:id` | Supprimer une tâche | - |
+### Base URL
+- **GET** `/` - Page d'accueil avec liste des endpoints disponibles
 
-## Exemples avec Postman
+### Tasks
 
-### Ajouter une tâche
+| Méthode | URL | Description | Body | Réponse |
+|---------|-----|-------------|------|----------|
+| GET | `/tasks` | Afficher toutes les tâches | - | Array de tâches |
+| GET | `/tasks/:id` | Afficher une tâche spécifique | - | Objet tâche |
+| POST | `/tasks` | Ajouter une nouvelle tâche | `{ "title": "..." }` | Tâche créée |
+| DELETE | `/tasks/:id` | Supprimer une tâche | - | Message de confirmation |
+
+## Exemples d'utilisation
+
+### Avec Postman
+
+#### Ajouter une tâche
 - **Méthode** : POST
 - **URL** : `http://localhost:3000/tasks`
+- **Headers** : `Content-Type: application/json`
 - **Body (JSON)** :
 ```json
 {
@@ -37,19 +80,51 @@ Le serveur démarre sur `http://localhost:3000`
 }
 ```
 
-### Afficher toutes les tâches
+#### Afficher toutes les tâches
 - **Méthode** : GET
 - **URL** : `http://localhost:3000/tasks`
 
-### Supprimer une tâche
+#### Supprimer une tâche
 - **Méthode** : DELETE
-- **URL** : `http://localhost:3000/tasks/1`
+- **URL** : `http://localhost:3000/tasks/{id}`
 
 ## Structure du projet
 
 ```
-├── models/           # Modèles de données
-├── controllers/      # Logique métier
-├── routes/          # Routes API
-└── index.js         # Point d'entrée
+├── config/
+│   └── db.js            # Configuration MongoDB
+├── controllers/         # Logique métier
+├── models/             # Modèles de données Mongoose
+├── routes/             # Définition des routes API
+├── .env.sample         # Variables d'environnement exemple
+├── .dockerignore       # Fichiers ignorés par Docker
+├── Dockerfile          # Configuration Docker
+├── docker-compose.yml  # Orchestration Docker
+├── index.js           # Point d'entrée de l'application
+└── package.json       # Dépendances et scripts
 ```
+
+## Technologies utilisées
+
+- **Node.js** - Runtime JavaScript
+- **Express.js** - Framework web
+- **MongoDB** - Base de données NoSQL
+- **Mongoose** - ODM pour MongoDB
+- **CORS** - Gestion des requêtes cross-origin
+- **dotenv** - Gestion des variables d'environnement
+- **Docker** - Containerisation
+
+## Scripts disponibles
+
+```bash
+npm run start    # Démarre l'application en production
+npm run dev      # Démarre en mode développement avec auto-reload
+```
+
+## Configuration
+
+### Variables d'environnement
+
+- `MONGODB_URI` - URI de connexion MongoDB (défaut: `mongodb://localhost:27017/exercice2`)
+- `PORT` - Port du serveur (défaut: 3000)
+- `NODE_ENV` - Environnement d'exécution (development/production)
