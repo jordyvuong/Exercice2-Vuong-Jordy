@@ -51,6 +51,18 @@ docker-compose down
 
 Le serveur démarre sur `http://localhost:3000`
 
+## Documentation API
+
+L'API est documentée avec Swagger/OpenAPI. Une fois le serveur démarré, vous pouvez accéder à :
+
+- **Documentation interactive** : [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+- **Spécification OpenAPI (JSON)** : [http://localhost:3000/api-docs.json](http://localhost:3000/api-docs.json)
+
+La documentation Swagger vous permet de :
+- Visualiser tous les endpoints disponibles
+- Tester les requêtes API directement depuis l'interface
+- Consulter les schémas de données et les exemples de requêtes/réponses
+
 ## API Endpoints
 
 ### Base URL
@@ -66,6 +78,10 @@ Le serveur démarre sur `http://localhost:3000`
 | DELETE | `/tasks/:id` | Supprimer une tâche | - | Message de confirmation |
 
 ## Exemples d'utilisation
+
+### Avec Swagger UI (Recommandé)
+
+Accédez à [http://localhost:3000/api-docs](http://localhost:3000/api-docs) pour tester l'API directement depuis l'interface Swagger.
 
 ### Avec Postman
 
@@ -110,6 +126,7 @@ Le serveur démarre sur `http://localhost:3000`
 - **Express.js** - Framework web
 - **MongoDB** - Base de données NoSQL
 - **Mongoose** - ODM pour MongoDB
+- **Swagger/OpenAPI** - Documentation API interactive
 - **CORS** - Gestion des requêtes cross-origin
 - **dotenv** - Gestion des variables d'environnement
 - **Docker** - Containerisation
