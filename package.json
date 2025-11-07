@@ -21,9 +21,11 @@
   },
   "homepage": "https://github.com/jordyvuong/Exercice2-Vuong-Jordy#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.19.1",
     "postgres": "^3.4.7",
     "swagger-ui": "^5.30.2",

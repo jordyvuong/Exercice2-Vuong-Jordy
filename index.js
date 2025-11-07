@@ -1,6 +1,7 @@
 const cors = require('cors');
 const { connectDB } = require('./config/postgres');
 const taskRoutes = require('./routes/taskRoutes');
+const authRoutes = require('./routes/authRoutes');
 const express = require('express')
 const app = express();
 const swaggerUi = require('swagger-ui-express');
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.use('/auth', authRoutes);
 app.use('/tasks', taskRoutes);
 
 // Root endpoint
