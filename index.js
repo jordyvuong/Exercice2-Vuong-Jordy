@@ -1,10 +1,14 @@
-const express = require('express');
 const cors = require('cors');
 const { connectDB } = require('./config/postgres');
 const taskRoutes = require('./routes/taskRoutes');
-
+const express = require('express')
 const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 const PORT = process.env.PORT || 3000;
+
+// Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Connxion to db
 connectDB();
